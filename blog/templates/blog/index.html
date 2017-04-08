@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+  {% for artigo in artigos %}
+    <div class="artigo">
+      <a href="{% url 'blog:artigo' artigo_id=artigo.id %}">
+        <h2>{{artigo.titulo}}</h2>
+      </a>
+      <div class="conteudo">
+        Publicado em {{artigo.publicacao|timesince}}<br/>
+        {{artigo.conteudo}}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
