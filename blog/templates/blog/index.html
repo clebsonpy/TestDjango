@@ -1,13 +1,20 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block conteudo %}
   {% for artigo in artigos %}
-    <div class="artigo">
-      <a href="{% url 'blog:artigo' artigo_id=artigo.id %}">
-        <h2>{{artigo.titulo}}</h2>
-      </a>
-      <div class="conteudo">
-        Publicado em {{artigo.publicacao|timesince}}<br/>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          Publicado em {{artigo.publicacao|timesince}}<br/>
+          <small>
+            <a href="{% url 'blog:artigo' artigo_id=artigo.id %}">
+              <h2>{{artigo.titulo}}</h2>
+            </a>
+          </small>
+        </h3>
+      </div>
+      <div class="panel-body">
         {{artigo.conteudo}}
       </div>
     </div>
